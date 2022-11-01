@@ -53,6 +53,10 @@ if [[ -n ${GITHUB_ACTIONS-} && -n ${DB-} && x$DB =~ ^xmariadb ]]; then
   sudo apt-get purge -y 'mysql-common*' 'mysql-client*' 'mysql-server*'
   sudo mv /etc/mysql "/etc/mysql-$(date +%Y%m%d-%H%M%S)"
   sudo mv /var/lib/mysql "/var/lib/mysql-$(date +%Y%m%d-%H%M%S)"
+  source /etc/lsb-release
+  sudo apt-get install -y software-properties-common
+  sudo apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 0xF1656F24C74CD1D8
+  sudo add-apt-repository "deb [arch=amd64,arm64,ppc64el] http://sfo1.mirrors.digitalocean.com/mariadb/repo/10.${minor_version}/ubuntu ${DISTRIB_CODENAME} main"
   sudo apt-get install -y -o Dpkg::Options::='--force-confnew' mariadb-server mariadb-server-10.${minor_version} libmariadb-dev
   CHANGED_PASSWORD_BY_RECREATE=true
 fi
