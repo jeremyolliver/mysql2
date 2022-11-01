@@ -13,8 +13,8 @@ jobs:
         os:
           # Use ubuntu-18.04 instead of ubuntu-20.04 temporarily, due to a failing test on mysql 8.0.
           # https://github.com/brianmario/mysql2/issues/1165
-          # - ubuntu-20.04 # focal
-          - ubuntu-18.04 # bionic
+          - ubuntu-20.04 # focal
+          # - ubuntu-18.04 # bionic
         ruby:
           - '3.1'
           - '3.0'
